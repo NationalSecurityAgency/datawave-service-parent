@@ -2,20 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>datawave-microservice-parent</artifactId>
         <groupId>gov.nsa.datawave.microservice</groupId>
-        <version>1.5</version>
+        <artifactId>datawave-microservice-parent</artifactId>
+        <version>1.6</version>
         <relativePath />
     </parent>
     <artifactId>datawave-microservice-service-parent</artifactId>
     <version>1.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>DataWave Microservices Spring Boot Service Parent</name>
+    <scm>
+        <connection>scm:git:https://github.com/NationalSecurityAgency/datawave-service-parent.git</connection>
+        <developerConnection>scm:git:git@github.com:NationalSecurityAgency/datawave-service-parent.git</developerConnection>
+        <url>https://github.com/NationalSecurityAgency/datawave-service-parent</url>
+    </scm>
     <properties>
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
-        <version.spring.boot>2.1.6.RELEASE</version.spring.boot>
-        <version.spring.cloud>Greenwich.SR2</version.spring.cloud>
+        <version.spring.boot>2.1.9.RELEASE</version.spring.boot>
+        <version.spring.cloud>Greenwich.SR3</version.spring.cloud>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -119,7 +124,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.22.2</version>
+                    <version>3.0.0-M3</version>
                     <executions>
                         <execution>
                             <goals>
@@ -135,7 +140,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <archive>
                             <manifest>
@@ -160,12 +165,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.1</version>
+                    <version>3.0.0-M3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.2.3</version>
                     <configuration>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <archive>
