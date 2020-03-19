@@ -8,20 +8,20 @@
         <relativePath />
     </parent>
     <artifactId>datawave-microservice-service-parent</artifactId>
-    <version>1.7</version>
+    <version>1.7.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>DataWave Microservices Spring Boot Service Parent</name>
     <scm>
         <connection>scm:git:https://github.com/NationalSecurityAgency/datawave-service-parent.git</connection>
         <developerConnection>scm:git:git@github.com:NationalSecurityAgency/datawave-service-parent.git</developerConnection>
-        <tag>1.7</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/NationalSecurityAgency/datawave-service-parent</url>
     </scm>
     <properties>
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
-        <version.spring.boot>2.1.9.RELEASE</version.spring.boot>
-        <version.spring.cloud>Greenwich.SR3</version.spring.cloud>
+        <version.spring.boot>2.1.13.RELEASE</version.spring.boot>
+        <version.spring.cloud>Greenwich.SR5</version.spring.cloud>
     </properties>
     <dependencyManagement>
         <dependencies>
