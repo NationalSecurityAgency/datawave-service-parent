@@ -4,7 +4,7 @@
     <parent>
         <groupId>gov.nsa.datawave.microservice</groupId>
         <artifactId>datawave-microservice-parent</artifactId>
-        <version>1.8</version>
+        <version>1.9-SNAPSHOT</version>
         <relativePath />
     </parent>
     <artifactId>datawave-microservice-service-parent</artifactId>
@@ -20,8 +20,8 @@
     <properties>
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
-        <version.spring.boot>2.2.2.RELEASE</version.spring.boot>
-        <version.spring.cloud>Hoxton.RELEASE</version.spring.cloud>
+        <version.spring.boot>2.4.4</version.spring.boot>
+        <version.spring.cloud>2020.0.2</version.spring.cloud>
     </properties>
     <dependencyManagement>
         <dependencies>
