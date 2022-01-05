@@ -20,6 +20,7 @@
     <properties>
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
+        <version.log4j>2.17.1</version.log4j>
         <version.spring.boot>2.4.4</version.spring.boot>
         <version.spring.cloud>2020.0.2</version.spring.cloud>
     </properties>
@@ -31,6 +32,13 @@
               -->
             <?SORTPOM IGNORE?>
             <!-- Override any spring boot or spring cloud dependencies by declaring the newer version here. -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${version.log4j}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
