@@ -21,8 +21,8 @@
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
         <version.log4j>2.17.1</version.log4j>
-        <version.spring.boot>2.6.3</version.spring.boot>
-        <version.spring.cloud>2021.0.0</version.spring.cloud>
+        <version.spring.boot>2.6.7</version.spring.boot>
+        <version.spring.cloud>2021.0.1</version.spring.cloud>
     </properties>
     <dependencyManagement>
         <dependencies>
