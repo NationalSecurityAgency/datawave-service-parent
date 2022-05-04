@@ -20,7 +20,9 @@
     <properties>
         <resource.delimiter>@</resource.delimiter>
         <!-- delimiter that doesn't clash with Spring ${} placeholders -->
-        <version.log4j>2.17.1</version.log4j>
+        <!-- NOTE: The spring-boot-dependencies import below will override the Junit and log4j bom imports provided via
+        datawave-microservice-parent.  Make sure to update the Junit and log4j versions in datawave-microservice-parent
+        as you update spring-boot version so that we don't get out of date. -->
         <version.spring.boot>2.6.7</version.spring.boot>
         <version.spring.cloud>2021.0.1</version.spring.cloud>
     </properties>
@@ -32,13 +34,6 @@
               -->
             <?SORTPOM IGNORE?>
             <!-- Override any spring boot or spring cloud dependencies by declaring the newer version here. -->
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${version.log4j}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -69,14 +64,6 @@
                 <scope>import</scope>
             </dependency>
             <?SORTPOM RESUME?>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-stream</artifactId>
-                <version>3.1.2</version>
-                <type>test-jar</type>
-                <classifier>test-binder</classifier>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -143,6 +130,38 @@
                     <configuration>
                         <parameters>true</parameters>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-banned-dependencies</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <bannedDependencies>
+                                        <excludes>
+                                            <!-- spring boot microservices do not use the following slf4j binders -->
+                                            <exclude>org.slf4j:slf4j-reload4j</exclude>
+                                            <!-- spring boot microservices do not use 1.x versions of log4j -->
+                                            <exclude>log4j:log4j</exclude>
+                                            <!-- spring boot microservices do not use 1.x versions of junit -->
+                                            <exclude>junit:junit</exclude>
+                                        </excludes>
+                                        <includes>
+                                            <!-- some spring boot microservices include test dependencies which use 1.x versions of junit -->
+                                            <include>junit:junit:*:*:test</include>
+                                        </includes>
+                                    </bannedDependencies>
+                                </rules>
+                                <fail>true</fail>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
