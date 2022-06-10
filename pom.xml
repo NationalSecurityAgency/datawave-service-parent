@@ -72,6 +72,13 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- This annotation processor is used by springdoc to use javadoc to create openapi documentation -->
+        <dependency>
+            <groupId>com.github.therapi</groupId>
+            <artifactId>therapi-runtime-javadoc-scribe</artifactId>
+            <version>0.13.0</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- includes test libraries (forcing the test scope) for all modules -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -282,6 +289,37 @@
         </pluginManagement>
     </build>
     <profiles>
+        <!-- Activate this profile when building the executable jar in order to host the javadoc within the service.  -->
+        <profile>
+            <id>embed-javadoc</id>
+            <activation>
+                <property>
+                    <name>embed-javadoc</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <!-- build javadoc jars per module for publishing to the repo -->
+                            <execution>
+                                <id>module-apidocs</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <destDir>${project.build.directory}/classes/static/javadoc</destDir>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>docker</id>
             <activation>
