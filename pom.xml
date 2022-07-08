@@ -23,8 +23,8 @@
         <!-- NOTE: The spring-boot-dependencies import below will override the Junit and log4j bom imports provided via
         datawave-microservice-parent.  Make sure to update the Junit and log4j versions in datawave-microservice-parent
         as you update spring-boot version so that we don't get out of date. -->
-        <version.spring.boot>2.6.7</version.spring.boot>
-        <version.spring.cloud>2021.0.1</version.spring.cloud>
+        <version.spring.boot>2.7.1</version.spring.boot>
+        <version.spring.cloud>2021.0.3</version.spring.cloud>
     </properties>
     <dependencyManagement>
         <dependencies>
