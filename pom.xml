@@ -4,11 +4,11 @@
     <parent>
         <groupId>gov.nsa.datawave.microservice</groupId>
         <artifactId>datawave-microservice-parent</artifactId>
-        <version>3.0.4-SNAPSHOT</version>
+        <version>3.0.5-SNAPSHOT</version>
         <relativePath>../microservice-parent</relativePath>
     </parent>
     <artifactId>datawave-microservice-service-parent</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>DataWave Microservices Spring Boot Service Parent</name>
     <scm>
@@ -312,6 +312,24 @@
                                 </configuration>
                             </execution>
                         </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>ch.qos.reload4j</groupId>
+                                <artifactId>reload4j</artifactId>
+                                <version>1.2.22</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.apache.maven.doxia</groupId>
+                                <artifactId>doxia-site-renderer</artifactId>
+                                <version>1.7.4</version>
+                                <exclusions>
+                                    <exclusion>
+                                        <artifactId>log4j</artifactId>
+                                        <groupId>log4j</groupId>
+                                    </exclusion>
+                                </exclusions>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
